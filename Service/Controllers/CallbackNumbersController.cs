@@ -24,6 +24,12 @@ namespace FullStackTraining.CallMeBack.Rest.Access.Controllers
             get
             {
                 var identity = new ClaimsIdentity();
+                identity.AddPermissions(new [] {
+                    Permissions.RegisterCallbackNumbers,
+                    Permissions.SearchCallbackNumbers,
+                    Permissions.RegisterFavorites,
+                    Permissions.SearchFavorites
+                });
                 var permissionClaim = new Claim(BasicsClaimTypes.Permission, string.Empty);
                 permissionClaim.Properties.Add(Permissions.RegisterCallbackNumbers, string.Empty);
                 permissionClaim.Properties.Add(Permissions.SearchCallbackNumbers, string.Empty);
